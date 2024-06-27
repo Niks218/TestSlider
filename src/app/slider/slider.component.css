@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .container {
   max-width: 600px;
   width: 100vw;
@@ -8,4 +12,5 @@
   display: flex;
   align-items: center;
   color: white;
+  overscroll-behavior-x: none;
 }
