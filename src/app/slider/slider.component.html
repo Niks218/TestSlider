@@ -1,5 +1,3 @@
-<div class="container">
-  <ng-container *ngIf="slides$ | async as slides">
-    <app-slider-frame *ngFor="let slide of slides" [slide]="slide"/>
-  </ng-container>
-</div>
+<ng-container *ngIf="slides$ | async as slides">
+  <app-slider-frame *ngFor="let slide of slides" [slide]="slide"/>
+</ng-container>
