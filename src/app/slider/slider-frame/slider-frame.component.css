@@ -12,9 +12,15 @@
   scroll-snap-align: start;
   text-align: center;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .slider-frame > img {
   object-fit: contain;
   width: 100%;
+  flex: 3 3 70%;
+}
+
+.slider-frame > .text {
+  flex: 1 1 30%
 }

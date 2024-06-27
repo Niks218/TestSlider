@@ -1,6 +1,9 @@
-<div class="slider-frame" [ngStyle]="{'background-image': 'url(' + slide.images.background + ')', 'background-size': 'cover'}">
-  <img ngSrc="{{slide.images.foreground}}" alt="slide-image" width="600" height="600"/>
-  <h2>{{ slide.title }}</h2>
-  <p>{{ slide.text }}</p>
-  <button class="outlined">Join now</button>
+<div class="slider-frame"
+     [ngStyle]="{'background-image': 'url(' + slide.images.background + ')', 'background-size': 'cover'}">
+  <img ngSrc="{{slide.images.foreground}}" alt="slide-image" width="500" height="500" priority/>
+  <div class="text">
+    <h2>{{ slide.title }}</h2>
+    <p>{{ slide.text }}</p>
+    <button class="outlined">Join now</button>
+  </div>
 </div>
