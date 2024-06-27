@@ -10,3 +10,8 @@
   color: white;
   overscroll-behavior-x: none;
 }
+
+#progress-bar {
+  width: 100%;
+  align-self: flex-start;
+}

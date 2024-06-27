@@ -1,3 +1,7 @@
-<ng-container *ngIf="slides$ | async as slides">
+<ng-container *ngIf="slides$ | async as slides; else loading">
   <app-slider-frame *ngFor="let slide of slides" [slide]="slide"/>
 </ng-container>
+
+<ng-template #loading>
+  <progress id="progress-bar" aria-label="Content loading…"></progress>
+</ng-template>

@@ -1,5 +1,5 @@
 import {HttpHandlerFn, HttpRequest, HttpResponse} from "@angular/common/http";
-import {of} from "rxjs";
+import {delay, of} from "rxjs";
 
 export default function fakeDataInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
   if (req.url === '/banners') {
@@ -27,7 +27,7 @@ export default function fakeDataInterceptor(req: HttpRequest<unknown>, next: Htt
           foreground: 'assets/wheel.png'
         }
       }]
-    }))
+    })).pipe(delay(500))
   }
 
   return next(req)
