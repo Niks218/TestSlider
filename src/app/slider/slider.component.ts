@@ -1,8 +1,8 @@
-import {Component, OnInit, AfterViewInit, ElementRef} from "@angular/core";
+import {Component, OnInit, AfterViewInit, ElementRef, HostListener, signal, effect} from "@angular/core";
 import {SliderFrameComponent} from "./slider-frame/slider-frame.component";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {Slide, SliderService} from "./slider.service";
-import {interval, Observable} from "rxjs";
+import {interval, Observable, Subscription} from "rxjs";
 
 @Component({
   standalone: true,
@@ -17,10 +17,16 @@ import {interval, Observable} from "rxjs";
   styleUrl: './slider.component.css'
 })
 export class SliderComponent implements OnInit, AfterViewInit {
-
+  private isUserSwiped = signal(false);
+  private intervalSubscription: Subscription | undefined;
   slides$!: Observable<Slide[]>
 
   constructor(private sliderService: SliderService, private el: ElementRef<HTMLDivElement>) {
+    effect(() => {
+      if (this.isUserSwiped()) {
+        this.intervalSubscription?.unsubscribe()
+      }
+    });
   }
 
   ngOnInit() {
@@ -28,7 +34,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    interval(10_000).subscribe(() => {
+    if (this.isUserSwiped()) {
+      return;
+    }
+    this.intervalSubscription = interval(10_000).subscribe(() => {
       const slider = this.el.nativeElement;
 
       if (slider.scrollLeft == slider.scrollWidth - slider.clientWidth) {
@@ -37,5 +46,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
         slider.scrollBy({left: slider.clientWidth, behavior: "smooth"})
       }
     })
+  }
+
+  @HostListener('touchstart')
+  onSwipe() {
+    this.isUserSwiped.set(true)
   }
 }
