@@ -1,0 +1,23 @@
+html {
+  font-family: Rubik, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  font-size: large;
+  height: 48px;
+  font-weight: 600;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.outlined {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 2rem;
+}

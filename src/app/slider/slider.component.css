@@ -1,0 +1,11 @@
+.container {
+  max-width: 600px;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  color: white;
+}
