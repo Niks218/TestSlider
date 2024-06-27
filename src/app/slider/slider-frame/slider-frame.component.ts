@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
-import {Slide} from "../slider.component";
 import {NgOptimizedImage, NgStyle} from "@angular/common";
+import {Slide} from "../slider.service";
 
 @Component({
   standalone: true,

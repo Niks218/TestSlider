@@ -1,3 +1,5 @@
 <div class="container">
-  <app-slider-frame (swipeleft)="back()" (swiperight)="forward()" *ngFor="let slide of slides" [slide]="slide"/>
+  <ng-container *ngIf="slides$ | async as slides">
+    <app-slider-frame *ngFor="let slide of slides" [slide]="slide"/>
+  </ng-container>
 </div>
