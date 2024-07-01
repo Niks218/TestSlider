@@ -1,6 +1,7 @@
 :host {
   max-width: 600px;
   width: 100vw;
+  max-height: 420px;
   height: 100vh;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
