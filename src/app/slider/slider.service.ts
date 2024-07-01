@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 export interface Slide {
   title: string;
   text: string;
+  reward: string;
   images: {
     background: string;
     foreground: string;

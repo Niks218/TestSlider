@@ -3,7 +3,7 @@
   <img ngSrc="{{slide.images.foreground}}" alt="slide-image" width="200" height="200" priority/>
   <div class="text">
     <h2>{{ slide.title }}</h2>
-    <p>{{ slide.text }}</p>
+    <p [innerHtml]="sliderText"></p>
     <button class="outlined">Join now</button>
   </div>
 </div>

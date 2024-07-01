@@ -1,6 +1,7 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit, ViewEncapsulation} from "@angular/core";
 import {NgOptimizedImage, NgStyle} from "@angular/common";
 import {Slide} from "../slider.service";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
 @Component({
   standalone: true,
@@ -10,8 +11,23 @@ import {Slide} from "../slider.service";
   imports: [
     NgOptimizedImage,
     NgStyle
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
-export class SliderFrameComponent {
-  @Input({required: true}) slide!: Slide;
+export class SliderFrameComponent implements OnInit{
+  @Input({required: true, transform}) slide!: Slide;
+  sliderText: SafeHtml = '';
+
+  constructor(private sanitizer: DomSanitizer) {
+  }
+
+  ngOnInit() {
+    this.sliderText = this.sanitizer.bypassSecurityTrustHtml(this.slide.text)
+  }
+}
+
+// should be some proper translation library
+function transform(slide: Slide): Slide {
+  slide.text = slide.text.replace(/<\d+>(.*?)<\/\d+>/, `<span>${slide.reward}</span>`)
+  return slide;
 }
