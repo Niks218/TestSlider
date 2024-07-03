@@ -43,11 +43,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     this.intervalSubscription = interval(10_000).subscribe(() => {
       const slider = this.el.nativeElement;
 
-      if (slider.scrollLeft === slider.scrollWidth - slider.clientWidth) {
-        slider.scrollTo({left: 0, behavior: "smooth"})
-      } else {
-        slider.scrollBy({left: slider.clientWidth, behavior: "smooth"})
-      }
+      slider.scrollBy({left: slider.clientWidth, behavior: "smooth"})
     })
   }
 
