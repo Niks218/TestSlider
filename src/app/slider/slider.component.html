@@ -1,4 +1,4 @@
-<ng-container *ngIf="slides$ | async as slides; else loading">
+<ng-container *ngIf="slides; else loading">
   <app-slider-frame *ngFor="let slide of slides" [slide]="slide"/>
 </ng-container>
 

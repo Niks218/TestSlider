@@ -9,6 +9,7 @@
   align-items: center;
   color: white;
   overscroll-behavior-x: none;
+  scrollbar-width: none;
 }
 
 #progress-bar {
